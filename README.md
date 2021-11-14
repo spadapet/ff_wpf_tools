@@ -1,2 +1,2 @@
-# Ferret Face WPF Tools
+# WPF Tools
 Another small MVVM library

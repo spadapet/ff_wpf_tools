@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Data;
 
-namespace ff.WpfTools
+namespace WpfTools
 {
-    public class BoolToObjectConverter : DependencyObject, IValueConverter
+    public class BoolToObjectConverter : ValueConverter
     {
         public static readonly DependencyProperty TrueValueProperty = DependencyProperty.Register("TrueValue", typeof(object), typeof(BoolToObjectConverter), new PropertyMetadata(null));
         public static readonly DependencyProperty FalseValueProperty = DependencyProperty.Register("FalseValue", typeof(object), typeof(BoolToObjectConverter), new PropertyMetadata(null));
@@ -22,7 +21,7 @@ namespace ff.WpfTools
             set { this.SetValue(BoolToObjectConverter.FalseValueProperty, value); }
         }
 
-        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is bool b)
             {
@@ -32,7 +31,7 @@ namespace ff.WpfTools
             throw new InvalidOperationException();
         }
 
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (object.Equals(value, this.TrueValue))
             {
@@ -45,6 +44,39 @@ namespace ff.WpfTools
             }
 
             throw new InvalidOperationException();
+        }
+    }
+
+    public sealed class BoolToVisibleConverter : BoolToObjectConverter
+    {
+        public static BoolToVisibleConverter Instance { get; } = new BoolToVisibleConverter();
+
+        public BoolToVisibleConverter()
+        {
+            this.TrueValue = Visibility.Visible;
+            this.FalseValue = Visibility.Collapsed;
+        }
+    }
+
+    public sealed class BoolToCollapsedConverter : BoolToObjectConverter
+    {
+        public static BoolToCollapsedConverter Instance { get; } = new BoolToCollapsedConverter();
+
+        public BoolToCollapsedConverter()
+        {
+            this.TrueValue = Visibility.Collapsed;
+            this.FalseValue = Visibility.Visible;
+        }
+    }
+
+    public sealed class BoolToInverseConverter : BoolToObjectConverter
+    {
+        public static BoolToInverseConverter Instance { get; } = new BoolToInverseConverter();
+
+        public BoolToInverseConverter()
+        {
+            this.TrueValue = false;
+            this.FalseValue = true;
         }
     }
 }

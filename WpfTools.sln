@@ -3,12 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31212.48
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution_items", "solution_items", "{FC1A2DA9-DF83-46D0-987E-0E3B222C21BB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC1A2DA9-DF83-46D0-987E-0E3B222C21BB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ff.WpfTools", "ff.wpf_tools\ff.WpfTools.csproj", "{30591A66-8FF9-4069-A7CA-7CEC013D3D77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfTools", "WpfTools\WpfTools.csproj", "{30591A66-8FF9-4069-A7CA-7CEC013D3D77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

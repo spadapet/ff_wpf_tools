@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ff.WpfTools
+namespace WpfTools
 {
     public static class WpfUtility
     {
